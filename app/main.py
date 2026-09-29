@@ -1,1 +1,11 @@
+from fastapi import FastAPI
 
+app = FastAPI()
+
+@app.get("/")
+def route():
+    return {"Hello":"World"}
+
+@app.get("/items/{item_id}")
+def item(item_id: int, q:str | None = None):
+    return {"item_id": item_id, "q": q}

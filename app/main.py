@@ -1,4 +1,11 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+class TranslateRequest(BaseModel):
+    text : str
+    source_language : str
+    target_language : str
+    
 
 app = FastAPI()
 
@@ -9,3 +16,5 @@ def route():
 @app.get("/items/{item_id}")
 def item(item_id: int, q:str | None = None):
     return {"item_id": item_id, "q": q}
+
+

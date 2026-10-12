@@ -18,3 +18,10 @@ def item(item_id: int, q:str | None = None):
     return {"item_id": item_id, "q": q}
 
 
+@app.post("/translate")
+def post(request: TranslateRequest):
+    return {
+        "text": request.text,
+        "source_language": request.source_language,
+        "target_language": request.target_language
+    }

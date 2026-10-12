@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Literal
 
 class TranslateRequest(BaseModel):
     text : str
-    source_language : str
-    target_language : str
+    source_language : Literal["en", "fa", "de", "ar", "es", "ja"]
+    target_language : Literal["en", "fa", "de", "ar", "es", "ja"]
     
 
 app = FastAPI()

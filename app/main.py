@@ -7,6 +7,10 @@ class TranslateRequest(BaseModel):
     source_language : Literal["en", "fa", "de", "ar", "es", "ja"]
     target_language : Literal["en", "fa", "de", "ar", "es", "ja"]
     
+class TranslateResponse(BaseModel):
+    text : str
+    source_language : Literal["en", "fa", "de", "ar", "es", "ja"]
+    target_language : Literal["en", "fa", "de", "ar", "es", "ja"]
 
 app = FastAPI()
 
@@ -19,7 +23,7 @@ def item(item_id: int, q:str | None = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.post("/translate")
+@app.post("/translate", response_model = TranslateResponse)
 def post(request: TranslateRequest):
     return {
         "text": request.text,

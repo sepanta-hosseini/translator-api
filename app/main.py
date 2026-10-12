@@ -11,6 +11,7 @@ class TranslateResponse(BaseModel):
     text : str
     source_language : Literal["en", "fa", "de", "ar", "es", "ja"]
     target_language : Literal["en", "fa", "de", "ar", "es", "ja"]
+    translation : str | None = None
 
 app = FastAPI()
 

@@ -30,7 +30,7 @@ def item(item_id: int, q: str | None = None):
 
 
 @app.post("/translate", response_model=TranslateResponse)
-def post(request: TranslateRequest):
+def translate_text(request: TranslateRequest):
     return {
         "text": request.text,
         "source_language": request.source_language,

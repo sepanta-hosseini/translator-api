@@ -35,4 +35,5 @@ def post(request: TranslateRequest):
         "text": request.text,
         "source_language": request.source_language,
         "target_language": request.target_language,
+        "translation": None,
     }

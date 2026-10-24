@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Literal
+from app.services import translate_text
 
 
 class TranslateRequest(BaseModel):
@@ -30,10 +31,12 @@ def item(item_id: int, q: str | None = None):
 
 
 @app.post("/translate", response_model=TranslateResponse)
-def translate_text(request: TranslateRequest):
+def translate_route(request: TranslateRequest):
     return {
         "text": request.text,
         "source_language": request.source_language,
         "target_language": request.target_language,
-        "translation": None,
+        "translation": translate_text(
+            request.text, request.source_language, request.target_language
+        ),
     }
